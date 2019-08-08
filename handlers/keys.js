@@ -1,0 +1,17 @@
+const key = {
+  private_key: `-----BEGIN RSA PRIVATE KEY-----
+MIIBOgIBAAJBAKbHkzepxFo5ZzQhmbxXbSc8v2AzzoktDZA9tqR+STh4H5LdEhQ7
+Mp7NxdPXrYq1SrYtpxn1ZAePJO6Sc9NYLNsCAwEAAQJAC3WVCPMSObzN+YgBfy5m
+opaK87o7i7NbxjhnT0AaGdYSKoN4rKI10UtGr19rxhNmIuhtEFOaiDh0xKcQh3Qa
+aQIhAPulEQApyuCaqi+kPMOCVlIZPEYa5BOrfH8U96ZGUMTPAiEAqaqBlaIwDZiD
+x5wDkYtYiPC1ksFKHbcmF26e4sihMjUCIQClcFoC73bvvv8QHzvLlU7G3sxfkqJL
+xDwvGEvQRv4mxQIgaPB7++f33sDhaRm3H1NXrENtmtqQk/aOydlyzoQXJ60CIAy9
+tSotN56ponOfi+hXny3C8fYSH0xWYX2nk7yd3MdG
+-----END RSA PRIVATE KEY-----`,
+  public_key: `-----BEGIN PUBLIC KEY-----
+MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKbHkzepxFo5ZzQhmbxXbSc8v2Azzokt
+DZA9tqR+STh4H5LdEhQ7Mp7NxdPXrYq1SrYtpxn1ZAePJO6Sc9NYLNsCAwEAAQ==
+-----END PUBLIC KEY-----`,
+};
+
+module.exports = key;
