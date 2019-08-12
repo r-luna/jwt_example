@@ -1,0 +1,27 @@
+
+<h4>Login</h4>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  function validate(){
+    console.log($('#login').serialize());
+
+    $.ajax({
+      url: './users/login',
+      type : 'post',
+      dataType : 'JSON',
+      data : $('#login').serialize(),
+      success : function(result) {
+        window.location.href = '/'; // done here due to jquery behaviour
+        // !!! see the note in /routes/users.js re this redirect
+      },
+      error: function(xhr, resp, text) {
+        console.log(xhr, resp, text);
+      }
+    });
+  }
+</script>
+<form id="login" onsubmit="return false">
+  email: <input name="useremail" type="email" value="someone@nowhere.com"><br />
+  password: <input name="password" type="password" value="qwerty"><br />
+  <input type="submit" onclick="validate()">
+</form>
