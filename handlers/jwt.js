@@ -1,44 +1,33 @@
 
 const jwt = require('jsonwebtoken');
-const { private_key: privkey, public_key: pubkey } = require('./keys');
 
-// PAYLOAD
-/*
-const payload = {
-  data1: 'd1',
-  data2: 'd2',
-  data3: 'd3',
-  data4: 'd4',
-};
+// MOVE TO ENV VARIABLE !!
+// http://jwtbuilder.jamiekurtz.com/
+const key = 'A54yw8We08N4Dcwl0vxWbpaVQyTCQkr1';
 
-const issuer = 'ACME Inc';
-const subject = 'someone@acmeinc.com';
-const audience = 'http://www.acmeinc.com';
-const expiresIn = '12h';
-const algorithm = 'RS256';
-*/
-
-const jwtSign = (payload, { issuer, subject, audience, expiresIn }) => {
-  const signingOptions = {
-    issuer,
-    subject,
-    audience,
-    expiresIn,
-    algorithm: 'RS256',
+const jwtSign = (payload) => {
+  const payloadWithClaims = {
+    ...payload,
+    typ: 'JWT',
+    iss: 'ACME Inc', // issuer
+    subj: 'validuser', // subject
+    aud: 'UserGroup1', // audience
+    exp: Math.floor(Date.now() / 1000) + (60 * 10), // expiresIn 10min
+    alg: 'HS256', // algorithm
   };
-  return jwt.sign(payload, privkey, signingOptions); // token
+  return jwt.sign(payloadWithClaims, key); // token
 };
 
-const jwtVerify = (token, { issuer, subject, audience, expiresIn }) => {
-  const verifyOptions = {
-    issuer,
-    subject,
-    audience,
-    expiresIn,
-    algorithm: ['RS256'],
+const jwtVerify = (token) => {
+  const claims = {
+    typ: 'JWT',
+    iss: 'ACME Inc', // issuer
+    subj: 'validuser', // subject
+    aud: 'UserGroup1', // audience
+    alg: 'HS256', // algorithm
   };
   try {
-    return jwt.verify(token, pubkey, verifyOptions); // decoded, null if invalid
+    return jwt.verify(token, key, claims); // decoded, null if invalid
   } catch (e) {
     return e;
   }
