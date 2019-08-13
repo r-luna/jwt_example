@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const authUser = require('../services/auth/auth_user');
+const authUser = require('../services/auth/authUser');
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
