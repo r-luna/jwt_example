@@ -8,7 +8,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
   const jwt = req.cookies.token;
   const isValid = jwtVerify(jwt);
-  res.render('index', { layout: 'default', role: isValid.aud });
+  const userData = {};
+  if (isValid) {
+    userData.role = isValid.role;
+    userData.usr = isValid.usr;
+  }
+  res.render('index', { layout: 'default', ...userData });
 });
 
 router.get('/login', (req, res) => {
@@ -21,6 +26,14 @@ router.get('/logout', (req, res) => {
     res.cookie('token', '', { expires: new Date(0) });
   }
   res.redirect('/');
+});
+
+router.get('/p1', (req, res) => {
+  res.render('page1', { layout: 'default' });
+});
+
+router.get('/p2', (req, res) => {
+  res.render('page2', { layout: 'default' });
 });
 
 module.exports = router;
