@@ -4,17 +4,18 @@ const authUser = require('../services/auth/auth_user');
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
+const cookieLifeSpan = 10; // minutes
 
-/* GET users listing. */
-router.post('/register', jsonParser, (req, res) => {
-  console.log(req.body);
+router.post('/login', jsonParser, async (req, res) => {
   const authRequest = authUser(req.body);
-  console.log('@@@@@@@', authRequest);
   if (authRequest.success) {
-    res.status(200);
-  } else {
-    res.status(401);
+    await res.cookie('token', authRequest.token, { httpOnly: true, expires: new Date(Date.now() + (60000) * cookieLifeSpan) });
+    // redirect accomplished on the front end due to jQuery making the the post request
+    res.send({}); // ensure jquery doesnt break
+    // res.redirect('/'); // see https://stackoverflow.com/questions/27202075/expressjs-res-redirect-not-working-as-expected
+    return;
   }
+  res.status(401);
   res.send(authRequest);
 });
 
