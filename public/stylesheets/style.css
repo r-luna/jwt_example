@@ -1,8 +1,35 @@
 body {
   padding: 50px;
-  font: 14px, Helvetica, Arial, sans-serif;
+}
+p, h1, h2, h3, h4, div, em, body, span {
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+em {
+  border: 1px solid #cbcbcb;
+  background-color: #feffdc;
+  padding: 0px 3px;
+  font-style: normal;
+  font-size: 12px;l
+}
+
+.authorized {
+  background-color: #e4fffe;
+  padding: 5px;
+}
+
+form {
+  border-bottom: 1px solid #bbbbbb;
+  padding: 0px 3px;
+  margin: 0px 0px 5px 0px;
+}
+
+.error {
+  background-color: #ffd8d8;
+  font-size: 12px;
 }
