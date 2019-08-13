@@ -2,26 +2,56 @@
 <h4>Login</h4>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-  function validate(){
-    console.log($('#login').serialize());
-
+  function validate(id){
+    // reset all error messages
+    $('.error').text('');
+    
+    var d = $('#' + id).serialize();
     $.ajax({
       url: './users/login',
       type : 'post',
       dataType : 'JSON',
-      data : $('#login').serialize(),
+      data : d,
       success : function(result) {
         window.location.href = '/'; // done here due to jquery behaviour
         // !!! see the note in /routes/users.js re this redirect
       },
       error: function(xhr, resp, text) {
-        console.log(xhr, resp, text);
+        $('#' + id + ' .error').text(text);
       }
     });
   }
 </script>
-<form id="login" onsubmit="return false">
-  email: <input name="useremail" type="email" value="someone@nowhere.com"><br />
-  password: <input name="password" type="password" value="qwerty"><br />
-  <input type="submit" onclick="validate()">
+
+<p>Select a user to login with. Each has a different level of access, hilited in yellow.</p>
+
+<form id="login1" onsubmit="return false">
+  <p><b><em>Admin</em> User</b></p>
+  <p>
+    email: <input name="useremail" type="email" value="someone@nowhere.com"><br />
+    password: <input name="password" type="password" value="qwerty"><br />
+    <input type="submit" onclick="validate('login1')">
+    <span class="error"></span>
+  </p>
 </form>
+
+<form id="login2" onsubmit="return false">
+  <p><b><em>Editor</em> User</b></p>
+  <p>
+    email: <input name="useremail" type="email" value="phantom@blackhole.com"><br />
+    password: <input name="password" type="password" value="foobar"><br />
+    <input type="submit" onclick="validate('login2')">
+    <span class="error"></span>
+  </p>
+</form>
+
+<form id="login3" onsubmit="return false">
+  <p><b><em>Reader</em> User</b></p>
+  <p>
+    email: <input name="useremail" type="email" value="joedirt@mindspring.com"><br />
+    password: <input name="password" type="password" value="mullethead"><br />
+    <input type="submit" onclick="validate('login3')">
+    <span class="error"></span>
+  </p>
+</form>
+
