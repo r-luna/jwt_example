@@ -17,6 +17,8 @@ To understand more about JWT and its implimentation in a multi-user/multi-role E
 
 # Setup
 
+place a `.env` file in the project root with the following values.
+
 | key       | value               | description               |
 | ----------| ------------------- | ------------------------- |
 |JWT_key   | 32-byte key          |Visit <a href="http://jwtbuilder.jamiekurtz.com">Signed JSON Web Token</a> to quickly create a 32-byte key with which to sign your JWT's.|
