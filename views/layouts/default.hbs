@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+
+{{> head}}
+
 <body>
-  {{#ifeq role 'admin'}}
-    <div class="authorized">
-      You are an authorized user logged in as {{../usr}}
-    </div>
-  {{/ifeq}}
+  {{#isLoggedIn usr role}}
+  <div class="authorized">
+    {{#isAdmin ../role}}
+      You are an <em>admin</em>. 
+    {{/isAdmin}}
+    {{#isEditor ../role}}
+      You are an <em>editor</em>.
+    {{/isEditor}}
+    {{#isReader ../role}}
+      You are a <em>reader</em>.
+    {{/isReader}}
+    You are logged in as {{../usr}}
+  </div>
+  {{/isLoggedIn}}
   <div class="container">
     {{> nav}}
     {{{body}}}
