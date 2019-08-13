@@ -4,7 +4,7 @@ const authUser = require('../services/auth/authUser');
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
-const cookieLifeSpan = 10; // minutes
+const cookieLifeSpan = process.env.JWT_exp; // minutes
 
 router.post('/login', jsonParser, async (req, res) => {
   const authRequest = authUser(req.body);
