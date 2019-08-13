@@ -1,4 +1,4 @@
-const { jwtSign } = require('../../handlers');
+const { jwtSign } = require('../../handlers').jwt;
 
 // our user "table"
 const user = {
@@ -19,8 +19,14 @@ const authUser = ({ useremail, password }) => {
     data3: 'd3',
     data4: 'd4',
   };
-
-  const token = jwtSign(payload);
+  const signingOptions = {
+    issuer: 'ACME Inc',
+    subject: 'someone@acmeinc.com',
+    audience: 'test',
+    expiresIn: '12h',
+    algorithm: 'RS256',
+  };
+  const token = jwtSign(payload, signingOptions);
   responseObj.success = true;
   responseObj.message = 'Login success';
   responseObj.token = token;
