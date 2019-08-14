@@ -15,7 +15,7 @@ This example app is built on Express and Handlebars with jQuery handling front-e
 4. Navigating the site causes express to inspect the `token` as needed where it is verified against the 32-byte key used to create it.
 5. Restricted pages, upon JWT verification, use the `role` claim to determine access to the page in question.
 
-# Installation And Use
+## Installation And Use
 
 * Clone the repo
 * `$ npm install`
@@ -25,7 +25,7 @@ This example app is built on Express and Handlebars with jQuery handling front-e
 * Login as one of the three provided users noting the associated roles
 * Navigate to the restricted pages
 
-# Setup
+## Setup
 
 Place a `.env` file in the project root with the following values.
 
@@ -35,15 +35,11 @@ Place a `.env` file in the project root with the following values.
 |JWT_algo  |HS256                 | JWT Algorithm. Must be a value supported by jsonwebtoken.|
 |JWT_exp   |10                    | In minutes, the expiration of the jwt and the HTTPonly cookie that holds it. |
 
-# API
+## API
 
 > POST /users/login
 
-## Payload
-
-Headers:
-
-* Content-Type application/json
+### Payload
 
 Sample payload:
 
@@ -55,7 +51,7 @@ Sample payload:
 
 ```
 
-## 200 ok
+### 200 OK
 Sample response:
 ```javascript
 {
