@@ -10,7 +10,7 @@ This example app is built on Express and Handlebars with jQuery handling front-e
 
 ## Workflow
 1. User log's in
-2. Upon successful login a JWT with claims referring to the uer's username and role is created.
+2. Upon successful login a JWT with claims referring to the user's username and role is created.
 3. The JWT is sent to the client via an HTTPonly cookie named simply as `token`.
 4. Navigating the site causes express to inspect the `token` as needed where it is verified against the 32-byte key used to create it.
 5. Restricted pages, upon JWT verification, use the `role` claim to determine access to the page in question.
