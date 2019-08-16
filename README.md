@@ -6,7 +6,11 @@ To understand more about JWT and its implimentation in a multi-user/multi-role E
 
 ## Overview
 
-This example app is built on Express and Handlebars with jQuery handling front-end login functions. The jsonwebtoken package handles JWT creation/verification. The JWT itself is held in an HTTPonly cookie. A `validatePermissions` middleware handles route access depending on the role of the currently logged-in user. For simplicity users are held in an array of user objects.
+This example app is built on Express and Handlebars. The jsonwebtoken package handles JWT creation/verification. The JWT itself is held in an HTTPonly cookie. A `validatePermissions` middleware handles route access depending on the role of the currently logged-in user. For simplicity users are held in an array of user objects.
+
+On successful authentication the user is redirected to the home page.
+
+The username and role type is printed at the top of all pages after succesful login.
 
 Note that the HTTPonly cookie in this example does not have the "secure" flag set as https is not available when running the app locally. See <a target="_blank" href="http://expressjs.com/en/api.html#res.cookie">res.cookie options</a>.
 
