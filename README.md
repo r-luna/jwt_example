@@ -57,9 +57,9 @@ Sample payload:
 
 ```
 ### 301 redirect
-Upon successful autnetication the user is redirected to the home page.
+Upon successfull authentication the user is redirected to the home page.
 
-The service can be easily modified to return the following.
+The service can be easily modified to return the following 200.
 
 ### 200 OK
 Sample response:
