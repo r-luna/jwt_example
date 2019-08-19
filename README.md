@@ -3,7 +3,7 @@
 ## Purpose
 
 To understand more about JWT and its implimentation in a multi-user/multi-role Express/Handlebars test case.
-
+ 
 ## Overview
 
 This example app is built on Express and Handlebars. The jsonwebtoken package handles JWT creation/verification. The JWT itself is held in an HTTPonly cookie. A `validatePermissions` middleware handles route access depending on the role of the currently logged-in user. For simplicity users are held in an array of user objects.
