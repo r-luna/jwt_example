@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+  {{#isLoggedIn usr role}}
+  <div class="authorized">
+    {{#isAdmin ../role}}
+      You are an <em>admin</em>. 
+    {{/isAdmin}}
+    {{#isEditor ../role}}
+      You are an <em>editor</em>.
+    {{/isEditor}}
+    {{#isReader ../role}}
+      You are a <em>reader</em>.
+    {{/isReader}}
+    You are logged in as <em>{{../usr}}</em>.
+  </div>
+  {{/isLoggedIn}}
+  <div class="container">
+    {{> nav}}
+    {{{body}}}
+  </div>
+  <p>{{message}}</p>
+</body>
+</html>
